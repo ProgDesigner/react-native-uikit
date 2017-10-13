@@ -1,4 +1,5 @@
-// react-native-root-toast@1.1.2
+'use strict';
+
 import React, { Component, } from 'react';
 import {
     ViewPropTypes,
@@ -11,7 +12,7 @@ import {
     Easing,
     Keyboard
 } from 'react-native';
-import RootSiblings from 'react-native-root-siblings';
+import RootSiblings from '../third-party/root-siblings';
 import PropTypes from 'prop-types';
 import Screen from './Screen';
 

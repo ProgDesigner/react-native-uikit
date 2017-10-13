@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "ProgDesigner <me@progdesigner.com>",
   "description": "React Native UIKit",
-  "private": true,
+  "private": false,
   "main": "index.js",
   "keywords": [
     "react",
@@ -23,7 +23,13 @@
     "react-native": "*"
   },
   "dependencies": {
-    "moment": "^2.19.0"
+    "array-includes": "^3.0.3",
+    "deepcopy": "^0.6.3",
+    "lodash": "4.17.4",
+    "lodash.isequal": "^4.5.0",
+    "moment": "^2.19.0",
+    "pad-number": "0.0.4",
+    "static-container": "^1.2.0"
   },
   "devDependencies": {
     "prop-types": "^15.6.0"

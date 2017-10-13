@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, StyleSheet, Dimensions, Modal, TouchableHighlight, TouchableOpacity, Animated, ScrollView, Platform, StatusBar, } from 'react-native';
+import RootSiblings from '../third-party/root-siblings';
 import Screen from './Screen';
 
 const titleHeight = 40;
@@ -290,6 +291,39 @@ export default class ActionSheet extends Component {
 
 		this._onDismiss(this);
 	}
+
+    static sharedInstance = null;
+
+    static show( options, defaultStyles = undefined, callback = (instance) => {} ) {
+
+        if (! ActionSheet.sharedInstance) {
+            ActionSheet.sharedInstance = new RootSiblings(<ActionSheet ref={ref=>ActionSheet.sharedInstanceRef=ref} styles={defaultStyles} />);
+        }
+
+        if (ActionSheet.sharedInstance && ActionSheet.sharedInstanceRef) {
+            ActionSheet.sharedInstanceRef.show(options, defaultStyles);
+            callback(ActionSheet.sharedInstanceRef);
+        }
+        else {
+            setTimeout(() => {
+                if (ActionSheet.sharedInstance && ActionSheet.sharedInstanceRef) {
+                    ActionSheet.sharedInstanceRef.show(options, defaultStyles);
+                    callback(ActionSheet.sharedInstanceRef);
+                }
+            }, 100);
+        }
+
+    }
+
+    static hide() {
+        if (ActionSheet.sharedInstance && ActionSheet.sharedInstanceRef) {
+            ActionSheet.sharedInstanceRef.hide();
+        }
+    }
+
+    static onDismiss() {
+        ActionSheet.hide();
+    }
 }
 
 const styles = StyleSheet.create({

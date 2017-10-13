@@ -1,6 +1,6 @@
 'use strict';
 
-// import React from 'react';
+import React from 'react';
 import {View,TouchableHighlight, TouchableOpacity, Text, StyleSheet, ActivityIndicator, TouchableNativeFeedback, Platform} from 'react-native';
 import isEqual from 'lodash.isequal';
 

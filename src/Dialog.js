@@ -1,10 +1,9 @@
-// based npm : react-native-dialog-master@1.0.6
+'use strict';
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { View, ViewPropTypes, StyleSheet, TouchableOpacity, Text, ScrollView, Dimensions, Modal } from 'react-native';
-import RootSiblings from 'react-native-root-siblings';
-import KeyboardSpacer from './KeyboardSpacer';
+import RootSiblings from '../third-party/root-siblings';
 import Screen from './Screen';
 
 const screenSize = Screen.size();
@@ -182,8 +181,8 @@ export default class Dialog extends Component {
         };
 
         let title = typeof item === 'string' ? item : item.title;
-        let customButtonFrameStyle = index === 0 ? customStyles.firstButtonFrame : customStyles.otherButtonFrame;
-        let customButtonTextStyle = item.type === 'cancel' ? customStyles.buttonCancelText : customStyles.buttonDefaultText;
+        let customButtonFrameStyle = index === 0 ? [styles.firstButtonFrame, customStyles.firstButtonFrame] : [styles.otherButtonFrame, customStyles.otherButtonFrame];
+        let customButtonTextStyle = item.type === 'cancel' ? [styles.buttonCancelText, customStyles.buttonCancelText] : [styles.buttonDefaultText, customStyles.buttonDefaultText];
 
         return (
             <View key={index} style={[styles.buttonFrame, customButtonFrameStyle]}>
@@ -245,10 +244,9 @@ export default class Dialog extends Component {
                         {contentComponent}
                         {footerComponent}
                     </View>
-                    <KeyboardSpacer />
                 </View>
             </Modal>
-        )
+        );
     }
 
     show( options, defaultStyles = undefined ) {
@@ -305,6 +303,12 @@ export default class Dialog extends Component {
             Dialog.sharedInstance = new RootSiblings(<Dialog ref={ref=>Dialog.sharedInstanceDialog=ref} styles={defaultStyles} />);
         }
 
+        if (!options.onDismiss) {
+            options.onDismiss = () => {
+
+            };
+        }
+
         if (Dialog.sharedInstance && Dialog.sharedInstanceDialog) {
             Dialog.sharedInstanceDialog.show(options, defaultStyles);
             callback(Dialog.sharedInstanceDialog);
@@ -329,11 +333,11 @@ export default class Dialog extends Component {
     static onDismiss() {
         Dialog.hide();
     }
-}
+}   
 
 const styles = StyleSheet.create({
     modal: {
-        backgroundColor: 'transparent'
+        backgroundColor: 'rgba(0,0,0,0.4)'
     },
     container: {
         width: screenWidth,
@@ -350,13 +354,14 @@ const styles = StyleSheet.create({
     boxView: {
         minWidth: minBoxWidth,
         minHeight: minBoxHeight,
+        width: minBoxWidth,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
 		backgroundColor: '#ffffff',
         overflow: 'hidden',
         borderWidth: 0,
-        borderRadius: 3
+        borderRadius: 8
     },
     boxHeader: {
         minHeight: 40,
@@ -402,8 +407,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexWrap: 'wrap',
-        marginBottom: 15,
         maxWidth: '100%',
+        borderTopWidth: 1,
+        borderTopColor: '#E0E0E0',
+        marginBottom: 0,
     },
     buttonFrame: {
         flex: 1,
@@ -415,19 +422,40 @@ const styles = StyleSheet.create({
         borderRadius: 3,
     },
     button: {
-        height:44,
+        flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        paddingHorizontal: 10,
+    	height: 44,
         borderWidth: 0,
-        borderRadius: 3,
-    	paddingHorizontal: 10,
-    	margin: 4
+        borderRadius: 0,
+        margin: 0,
     },
     buttonText: {
         fontSize: 14,
         color: '#333',
         textAlignVertical: 'center',
         textAlign: 'center',
-    }
+    },
+    firstButtonFrame: {
+
+    },
+    otherButtonFrame: {
+        borderRadius: 0,
+        borderLeftWidth: 1,
+        borderLeftColor: '#E0E0E0',
+    },
+    buttonDefaultText: {
+        color: '#0D73D9',
+        fontSize: 15,
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    buttonCancelText: {
+        color: '#C43E3D',
+        fontSize: 15,
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
 });

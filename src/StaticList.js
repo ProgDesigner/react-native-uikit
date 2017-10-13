@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         borderTopWidth: 1,
-        borderColor: "#EDEDED",
+        borderTopColor: "#EDEDED",
         backgroundColor: '#fff',
         marginTop: 16,
     },
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         borderBottomWidth: 1,
-        borderColor: "#EDEDED",
+        borderBottomColor: "#EDEDED",
     },
     cellContainer: {
         width: '100%',

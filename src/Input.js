@@ -1,6 +1,9 @@
+'use strict';
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, View, Text, TextInput, StyleSheet, Image, Platform } from 'react-native';
+import { InputText } from './TextField';
 
 class CheckBox extends Component {
 
@@ -70,239 +73,6 @@ Radio.propTypes = {
     uncheckedComponent: PropTypes.element
 };
 
-
-class InputText extends Component {
-
-    get tag() {
-        return this.props.tag;
-    }
-
-    get contentComponent() {
-        return this._contentRef;
-    }
-
-    get value() {
-
-        if (this._innerValue) {
-            return this._innerValue;
-        }
-
-        if (this._contentRef) {
-            if (typeof this._contentRef._lastNativeText === 'undefined') {
-                return this._contentRef._getText();
-            }
-
-            return this._contentRef._lastNativeText;
-        }
-
-        return this.props.defaultValue;
-    }
-
-    set value(value) {
-        var nativeProps = { text: value };
-
-        this._innerValue = value;
-
-        if (this._contentRef && this._contentRef._inputRef) {
-            this._contentRef._lastNativeText = value;
-            this._contentRef._inputRef.setNativeProps(nativeProps);
-            this._contentRef.forceUpdate();
-        }
-    }
-
-    get isBlank() {
-        return (!this.value) ? true : false;
-    }
-
-    get isFocused() {
-        if (this._contentRef) {
-            return this._contentRef.isFocused();
-        }
-
-        return false;
-    }
-
-    setNativeProps(props) {
-        if (this._contentRef && this._contentRef._inputRef) {
-            this._contentRef._inputRef.setNativeProps(props);
-        }
-    }
-
-    clear() {
-        this._innerValue = '';
-
-        if (this._contentRef) {
-            return this._contentRef.clear();
-        }
-    }
-
-    focus() {
-        if (this._contentRef) {
-            this._contentRef.focus();
-        }
-    }
-
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            isFocused: false,
-        };
-    }
-
-    render() {
-        let {
-            accessibilityLabel,
-            autoCapitalize,
-            autoCorrect,
-            autoFocus,
-            caretHidden,
-            clearButtonMode,
-            clearTextOnFocus,
-            dataDetectorTypes,
-            dblurOnSubmit,
-            defaultValue,
-            disableFullscreenUI,
-            editable,
-            enablesReturnKeyAutomatically,
-            inlineImageLeft,
-            inlineImagePadding,
-            keyboardAppearance,
-            keyboardType,
-            maxLength,
-            multiline,
-            numberOfLines,
-            // onBlur,
-            onChangeText,
-            onContentSizeChange,
-            onEndEditing,
-            // onFocus,
-            onFocusxonChange,
-            onKeyPress,
-            onLayout,
-            onScroll,
-            onSelectionChange,
-            onSubmitEditing,
-            placeholder,
-            placeholderTextColor,
-            returnKeyLabel,
-            returnKeyType,
-            secureTextEntry,
-            selection,
-            selectionColor,
-            selectionState,
-            selectTextOnFocus,
-            spellCheck,
-            style,
-            textAlign,
-            // value,
-            // underlineColorAndroid,
-
-            placeholderStyle,
-            inputStyle,
-        } = this.props;
-
-        let textAlignStyle = ( textAlign ) ? { textAlign:textAlign } : undefined;
-
-        let newProps = {
-            accessibilityLabel: accessibilityLabel,
-            autoCapitalize: autoCapitalize,
-            autoCorrect: autoCorrect,
-            autoFocus: autoFocus,
-            caretHidden: caretHidden,
-            clearButtonMode: clearButtonMode,
-            clearTextOnFocus: clearTextOnFocus,
-            dataDetectorTypes:dataDetectorTypes ,
-            dblurOnSubmit: dataDetectorTypes,
-            defaultValue: defaultValue,
-            disableFullscreenUI: disableFullscreenUI,
-            // editable: editable,
-            enablesReturnKeyAutomatically: enablesReturnKeyAutomatically,
-            inlineImageLeft: inlineImageLeft,
-            inlineImagePadding: inlineImagePadding,
-            keyboardAppearance: keyboardAppearance,
-            keyboardType: keyboardType,
-            maxLength: maxLength,
-            multiline: multiline,
-            numberOfLines: numberOfLines,
-            //onBlur: onBlur,
-            // onChangeText: onChangeText,
-            onContentSizeChange: onContentSizeChange,
-            onEndEditing: onEndEditing,
-            //onFocus: onFocus,
-            onFocusxonChange: onFocusxonChange,
-            onKeyPress: onKeyPress,
-            onLayout: onLayout,
-            onScroll: onScroll,
-            onSelectionChange: onSelectionChange,
-            onSubmitEditing,
-            // placeholder: placeholder,
-            // placeholderTextColor: placeholderTextColor,
-            returnKeyLabel: returnKeyLabel,
-            returnKeyType: returnKeyType ,
-            secureTextEntry: secureTextEntry,
-            selection: selection,
-            selectionColor: selectionColor,
-            selectionState: selectionState,
-            selectTextOnFocus: selectTextOnFocus,
-            spellCheck: spellCheck,
-            textAlign: textAlign,
-            // underlineColorAndroid
-        };
-
-        let pointerEvents = editable === false ? 'none' : 'auto';
-        var fontSize = styles.input && styles.input.fontSize ? styles.input.fontSize : 15;
-        fontSize = inputStyle && inputStyle.fontSize ? inputStyle.fontSize : fontSize;
-
-        let placeholderBaseStyle = {position:'absolute', left:0, top:0, width:'100%', backgroundColor:'transparent', paddingVertical: 4, paddingHorizontal:2, };
-        let placeholderAlignStyle = multiline === true ? {flexDirection:'row', justifyContent:'flex-start', alignItems:'center', } : {flexDirection:'row', justifyContent:'flex-start', alignItems:'center' };
-        let placeholderVisibleStyle = this.state.isFocused === false && this.isBlank === true ? {} : {display:'none'};
-
-        let inputViewStyle = undefined;//multiline === true ? { alignItems:'flex-start', backgroundColor: '#ff3300', } : {};
-
-        return (
-            <View pointerEvents={pointerEvents} accessibilityLabel={accessibilityLabel} style={[styles.inputContainer, style, inputViewStyle]} onLayout={this.onLayout}>
-                <TextInput {...newProps} ref={ref => {this._contentRef = ref;}} style={[styles.input, textAlignStyle, inputStyle]} underlineColorAndroid='transparent' placeholder='' editable={true} spellCheck={false} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} onChangeText={this.onChangeText.bind(this)} />
-                <View pointerEvents='none' style={[placeholderBaseStyle, placeholderStyle, placeholderAlignStyle, placeholderVisibleStyle]}>
-                    <Text style={{fontSize:fontSize, color:placeholderTextColor}}>{placeholder}</Text>
-                </View>
-            </View>
-        );
-    }
-
-    onFocus() {
-        this.setState({
-            isFocused:true,
-        });
-
-        this.props.onFocus && this.props.onFocus();
-    }
-
-    onBlur() {
-
-        this.setState({
-            isFocused:false,
-        });
-
-        this.props.onBlur && this.props.onBlur();
-    }
-
-    onChangeText(text) {
-        var newText = this.props.allowSpace === true ? text : text.replace(' ', '').trim();
-        //
-
-        if (text != newText) {
-            this.value = newText;
-            this.forceUpdate();
-            return;
-        }
-
-        this._innerValue = newText;
-        this.forceUpdate();
-        this.props.onChangeText && this.props.onChangeText(newText);
-    }
-}
-
 class Input extends Component {
 
     get isChecked() {
@@ -356,6 +126,14 @@ class Input extends Component {
         this.state = this.props.type === 'text' ? {value:this.props.value} : {checked:false};
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.checked !== this.state.checked) {
+            this.setState({
+                checked: nextProps.checked
+            });
+        }
+    }
+
     _contentComponent() {
         if (this.props.type === 'checkbox') {
             return (
@@ -385,14 +163,16 @@ class Input extends Component {
         if (this.props.type === 'text') {
 
             let { accessibilityLabel, allowSpace, autoCapitalize, autoCorrect, autoFocus, caretHidden, clearButtonMode, clearTextOnFocus, dataDetectorTypes, dblurOnSubmit, defaultValue, disableFullscreenUI, editable, enablesReturnKeyAutomatically, inlineImageLeft, inlineImagePadding, keyboardAppearance, keyboardType, maxLength, multiline, numberOfLines, onBlur, onChangeText, onContentSizeChange, onEndEditing, onFocus, onFocusxonChange, onKeyPress, onLayout, onScroll, onSelectionChange, onSubmitEditing, placeholder, placeholderTextColor, returnKeyLabel, returnKeyType, secureTextEntry, selection, selectionColor, selectionState, selectTextOnFocus, spellCheck, textAlign, inputStyle} = this.props;
-
             let newProps = { accessibilityLabel: accessibilityLabel, allowSpace: allowSpace, autoCapitalize: autoCapitalize, autoCorrect: autoCorrect, autoFocus: autoFocus, caretHidden: caretHidden, clearButtonMode: clearButtonMode, clearTextOnFocus: clearTextOnFocus, dataDetectorTypes:dataDetectorTypes , dblurOnSubmit: dataDetectorTypes, defaultValue: defaultValue, disableFullscreenUI: disableFullscreenUI, editable: editable, enablesReturnKeyAutomatically: enablesReturnKeyAutomatically, inlineImageLeft: inlineImageLeft, inlineImagePadding: inlineImagePadding, keyboardAppearance: keyboardAppearance, keyboardType: keyboardType, maxLength: maxLength, multiline: multiline, numberOfLines: numberOfLines, onBlur: onBlur, onChangeText: onChangeText, onContentSizeChange: onContentSizeChange, onEndEditing: onEndEditing, onFocus: onFocus, onFocusxonChange: onFocusxonChange, onKeyPress: onKeyPress, onLayout: onLayout, onScroll: onScroll, onSelectionChange: onSelectionChange, onSubmitEditing, placeholder: placeholder, placeholderTextColor: placeholderTextColor, returnKeyLabel: returnKeyLabel, returnKeyType: returnKeyType , secureTextEntry: secureTextEntry, selection: selection, selectionColor: selectionColor, selectionState: selectionState, selectTextOnFocus: selectTextOnFocus, spellCheck: spellCheck, textAlign: textAlign, inputStyle: inputStyle};
+            
+            let userStyle = StyleSheet.flatten(this.props.style);
+            let containerStyle = userStyle && userStyle.height ? { height: userStyle.height } : undefined;
 
             return (
                 <View style={[styles.frame, this.props.style]}>
-                    <View style={[styles.textContainer, this.props.containerStyle]}>
+                    <View style={[styles.textContainer, containerStyle, this.props.containerStyle]}>
                         {this.props.hideLabel === false && this.props.labelBefore === true && this.props.label.length > 0 ? <Label labelStyle={this.props.labelStyle} numberOfLabelLines={this.props.numberOfLabelLines} label={this.props.label} /> : null}
-                        <InputText ref={ref => this._contentRef=ref} style={this.props.inputFrameStyle} {...newProps} value={this.state.value} />
+                        <InputText ref={ref => this._contentRef=ref} userStyle={userStyle} style={this.props.inputFrameStyle} {...newProps} value={this.state.value} />
                         {this.props.hideLabel === false && this.props.labelBefore === false && this.props.label.length > 0 ? <Label labelStyle={this.props.labelStyle} numberOfLabelLines={this.props.numberOfLabelLines} label={this.props.label} /> : null}
                     </View>
                 </View>
@@ -464,11 +244,11 @@ const Label = (props) => (
 const styles = StyleSheet.create({
 
     frame: {
-
+        
     },
     textContainer: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
 
     container: {
@@ -484,22 +264,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#222'
     },
-
-    inputContainer: {
-        width: '100%',
-    },
-
-    input: {
-        textDecorationLine: 'none',
-        ...Platform.select({
-            ios: {
-                marginHorizontal: 0
-            },
-            android: {
-                marginHorizontal: -4
-            }
-        })
-    }
 });
 
 module.exports = Input;

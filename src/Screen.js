@@ -1,7 +1,8 @@
-//import React, { Component } from 'react';
+'use strict';
+
 import PropTypes from 'prop-types';
 import { StyleSheet, View, ViewPropTypes, Platform, Dimensions, } from 'react-native';
-import RootSiblings from 'react-native-root-siblings';
+import RootSiblings from '../third-party/root-siblings';
 
 const ScreenSize = Dimensions.get('window');
 

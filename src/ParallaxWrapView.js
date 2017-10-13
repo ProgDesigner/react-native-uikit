@@ -1,3 +1,5 @@
+'use strict';
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Dimensions, Animated, StatusBar } from 'react-native';

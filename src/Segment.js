@@ -1,3 +1,5 @@
+'use strict';
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { Dimensions, StyleSheet, View, Text, TouchableHighlight, ViewPropTypes } from 'react-native';
@@ -27,9 +29,9 @@ class SegmentItem extends Component {
         );
     }
 
-    onSelect() {
+    onSelect(e) {
 
-        this.props.onSelect && this.props.onSelect.apply(this, [this]);
+        this.props.onSelect && this.props.onSelect.apply(this, [this, e]);
     }
 }
 
@@ -67,21 +69,21 @@ export default class Segment extends Component {
             page = 0;
         }
 
-        this.didUpdatePage(page);
+        this.didUpdatePage(page, null);
     }
 
-    didUpdatePage(index) {
+    didUpdatePage(index, e) {
 
         this.setState({
             selectedIndex: index,
         });
 
-        this.props.onItemSelected && this.props.onItemSelected.apply(this, [index]);
+        this.props.onItemSelected && this.props.onItemSelected.apply(this, [index, e]);
     }
 
-    didSelectItem( item, index ) {
+    didSelectItem( e, item, index ) {
 
-        this.didUpdatePage( index );
+        this.didUpdatePage( index, e );
     }
 
     render() {
@@ -117,8 +119,8 @@ export default class Segment extends Component {
                     key: 'item_' + index,
                     isOn: isOn,
                     style: [itemStyle, child.props.style, itemOverrideStyle],
-                    onSelect: (item) => {
-                        this.didSelectItem(child, index);
+                    onSelect: (item, e) => {
+                        this.didSelectItem(e, item, index);
                     }
                 })
             }

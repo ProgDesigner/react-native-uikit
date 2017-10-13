@@ -1,3 +1,5 @@
+'use strict';
+
 import React, {Component} from 'react';
 import { Animated, Easing, View, Text, TextInput, TouchableHighlight, StyleSheet } from 'react-native';
 
@@ -117,7 +119,7 @@ export default class TabView extends Component {
             this.setState({tabIndex: index});
         });
 
-        this.props.onChange && this.props.onChange.apply(this, [index]);
+        this.props.onItemSelected && this.props.onItemSelected.apply(this, [index]);
     }
 }
 

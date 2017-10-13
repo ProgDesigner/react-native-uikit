@@ -7,6 +7,8 @@ import Picker from './Picker';
 import Moment from 'moment';
 import NumberPad from 'pad-number';
 
+console.log( "Picker", Picker );
+
 export default class DatePicker extends Component {
 
     static defaultProps = {
@@ -142,7 +144,7 @@ export default class DatePicker extends Component {
             let picker = this.state.yearPicker;
             let value = picker.itemList[index];
             let currentDate = Moment(this.state.currentDate);
-            let selectedDate = currentDate.years(value).format("YYYY-MM-DD");
+            let selectedDate = currentDate.year(value).format("YYYY-MM-DD");
 
             this.setState({
                 currentDate: selectedDate,
@@ -187,8 +189,7 @@ export default class DatePicker extends Component {
 const styles = StyleSheet.create({
     container: {
         width: 300,
-        height: 340,
-        backgroundColor: '#fff',
+        height: 240,
         overflow: 'hidden',
         borderWidth: 0,
         borderRadius: 8,
@@ -204,7 +205,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     pickerItem: {
-        color: '#494949',
-        fontSize: 26
+        color: '#333333',
+        fontSize: 21
     },
 });

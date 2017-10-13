@@ -1,4 +1,4 @@
-package com.zyu;
+package com.progdesigner.uikit;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -20,15 +20,13 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
 
 import java.util.List;
 
-/**
- * @author <a href="mailto:lesliesam@hotmail.com"> Sam Yu </a>
- */
-public class ReactWheelCurvedPicker extends WheelCurvedPicker {
+
+public class RNPicker extends WheelCurvedPicker {
 
     private final EventDispatcher mEventDispatcher;
     private List<Integer> mValueData;
 
-    public ReactWheelCurvedPicker(ReactContext reactContext) {
+    public RNPicker(ReactContext reactContext) {
         super(reactContext);
         mEventDispatcher = reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
         setOnWheelChangeListener(new OnWheelChangeListener() {
@@ -56,8 +54,8 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
 
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
-        int colorFrom = 0x00FFFFFF;//Color.BLACK;
-        int colorTo = Color.WHITE;
+        int colorFrom = Color.BLACK;
+        int colorTo = Color.BLACK;
         LinearGradient linearGradientShader = new LinearGradient(rectCurItem.left, rectCurItem.top, rectCurItem.right/2, rectCurItem.top, colorFrom, colorTo, Shader.TileMode.MIRROR);
         paint.setShader(linearGradientShader);
         canvas.drawLine(rectCurItem.left, rectCurItem.top, rectCurItem.right, rectCurItem.top, paint);

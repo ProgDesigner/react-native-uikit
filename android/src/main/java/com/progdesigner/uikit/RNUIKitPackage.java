@@ -1,4 +1,4 @@
-package com.zyu;
+package com.progdesigner.uikit;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -10,16 +10,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * @author <a href="mailto:lesliesam@hotmail.com"> Sam Yu </a>
- */
-public class ReactNativeWheelPickerPackage implements ReactPackage {
+public class RNUIKitPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Collections.emptyList();
     }
 
-    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
@@ -27,7 +23,7 @@ public class ReactNativeWheelPickerPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
-                new ReactWheelCurvedPickerManager()
+            new RNPickerManager()
         );
     }
 }

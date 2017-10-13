@@ -1,4 +1,4 @@
-// "react-native-keyboard-aware-scrollview": "^1.1.6",
+'use strict';
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
