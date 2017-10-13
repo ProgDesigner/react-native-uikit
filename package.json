@@ -1,0 +1,31 @@
+{
+  "name": "react-native-uikit",
+  "version": "0.1.0",
+  "author": "ProgDesigner <me@progdesigner.com>",
+  "description": "React Native UIKit",
+  "private": true,
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "react-native",
+    "ios",
+    "android",
+    "component",
+    "uikit",
+    "progdesigner"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/progdesigner/react-native-uikit.git"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "dependencies": {
+    "moment": "^2.19.0"
+  },
+  "devDependencies": {
+    "prop-types": "^15.6.0"
+  }
+}
