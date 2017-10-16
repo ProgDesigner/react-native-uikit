@@ -2,12 +2,14 @@
 import ActionSheet from './src/ActionSheet';
 import Button from './src/Button';
 import DatePicker from './src/DatePicker';
+import Device from './src/Device';
 import Dialog from './src/Dialog';
 import Input from './src/Input';
 import KeyboardSpacer from './src/KeyboardSpacer';
 import Navigation from './src/Navigation';
 import PageControl from './src/PageControl';
 import ParallaxWrapView from './src/ParallaxWrapView';
+import Permissions from './src/Permissions';
 import Picker from './src/Picker';
 import ReversedFlatList from './src/ReversedFlatList';
 import Screen from './src/Screen';
@@ -23,12 +25,14 @@ export {
     ActionSheet,
     Button,
     DatePicker,
+    Device,
     Dialog,
     Input,
     KeyboardSpacer,
     Navigation,
     PageControl,
     ParallaxWrapView,
+    Permissions,
     Picker,
     ReversedFlatList,
     Screen,

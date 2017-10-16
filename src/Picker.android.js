@@ -14,7 +14,7 @@ import createReactClass from 'create-react-class';
 
 const defaultStyles = StyleSheet.create({
 	itemStyle: {
-		color:'#333333', 
+		color:'#333333',
 		fontSize: 21
 	}
 });
@@ -80,8 +80,6 @@ const Picker = createReactClass({
 	},
 
 	render() {
-
-		console.log( "this.state.textColor", this.state.textColor );
 
 		return <PickerNative
 				{...this.props}

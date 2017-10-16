@@ -13,7 +13,10 @@ import java.util.List;
 public class RNUIKitPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+      return Arrays.<NativeModule>asList(
+          new RNDevice(reactContext),
+          new RNPermissions(reactContext)
+      );
     }
 
     public List<Class<? extends JavaScriptModule>> createJSModules() {

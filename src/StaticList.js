@@ -94,7 +94,7 @@ class StaticList extends Component {
             if (child && child.type === Section) {
                 return React.cloneElement(child, {
                     itemInset: itemInset,
-                    selectable: selectable,
+                    selectable: typeof child.props.selectable !== 'undefined' ? child.props.selectable : selectable,
                     onSelectItem: onSelectItem && onSelectItem.bind(this)
                 })
             }

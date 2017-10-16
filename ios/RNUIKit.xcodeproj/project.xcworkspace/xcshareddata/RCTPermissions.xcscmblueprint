@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DC1486A474020318802FD2A089887415A5EC7ED7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DC1486A474020318802FD2A089887415A5EC7ED7" : 9223372036854775807,
+    "08FAB01B2E3D1E525F62C8FFD141A374419BFFFE" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "75741FD5-1EBE-4CE7-94C7-3F77F311B69F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DC1486A474020318802FD2A089887415A5EC7ED7" : "shared\/",
+    "08FAB01B2E3D1E525F62C8FFD141A374419BFFFE" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RCTPermissions",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "modules\/react-native\/permissions\/ios\/RCTPermissions.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/git.cclss.net:7990\/scm\/heln\/helene-client.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "08FAB01B2E3D1E525F62C8FFD141A374419BFFFE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/git.cclss.net:7990\/scm\/blnk\/shared.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DC1486A474020318802FD2A089887415A5EC7ED7"
+    }
+  ]
+}

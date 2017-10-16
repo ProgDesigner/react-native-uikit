@@ -7,8 +7,6 @@ import Picker from './Picker';
 import Moment from 'moment';
 import NumberPad from 'pad-number';
 
-console.log( "Picker", Picker );
-
 export default class DatePicker extends Component {
 
     static defaultProps = {
