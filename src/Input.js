@@ -162,9 +162,10 @@ class Input extends Component {
 
         if (this.props.type === 'text') {
 
-            let { accessibilityLabel, allowSpace, autoCapitalize, autoCorrect, autoFocus, caretHidden, clearButtonMode, clearTextOnFocus, dataDetectorTypes, dblurOnSubmit, defaultValue, disableFullscreenUI, editable, enablesReturnKeyAutomatically, inlineImageLeft, inlineImagePadding, keyboardAppearance, keyboardType, maxLength, multiline, numberOfLines, onBlur, onChangeText, onContentSizeChange, onEndEditing, onFocus, onFocusxonChange, onKeyPress, onLayout, onScroll, onSelectionChange, onSubmitEditing, placeholder, placeholderTextColor, returnKeyLabel, returnKeyType, secureTextEntry, selection, selectionColor, selectionState, selectTextOnFocus, spellCheck, textAlign, inputStyle} = this.props;
-            let newProps = { accessibilityLabel: accessibilityLabel, allowSpace: allowSpace, autoCapitalize: autoCapitalize, autoCorrect: autoCorrect, autoFocus: autoFocus, caretHidden: caretHidden, clearButtonMode: clearButtonMode, clearTextOnFocus: clearTextOnFocus, dataDetectorTypes:dataDetectorTypes , dblurOnSubmit: dataDetectorTypes, defaultValue: defaultValue, disableFullscreenUI: disableFullscreenUI, editable: editable, enablesReturnKeyAutomatically: enablesReturnKeyAutomatically, inlineImageLeft: inlineImageLeft, inlineImagePadding: inlineImagePadding, keyboardAppearance: keyboardAppearance, keyboardType: keyboardType, maxLength: maxLength, multiline: multiline, numberOfLines: numberOfLines, onBlur: onBlur, onChangeText: onChangeText, onContentSizeChange: onContentSizeChange, onEndEditing: onEndEditing, onFocus: onFocus, onFocusxonChange: onFocusxonChange, onKeyPress: onKeyPress, onLayout: onLayout, onScroll: onScroll, onSelectionChange: onSelectionChange, onSubmitEditing, placeholder: placeholder, placeholderTextColor: placeholderTextColor, returnKeyLabel: returnKeyLabel, returnKeyType: returnKeyType , secureTextEntry: secureTextEntry, selection: selection, selectionColor: selectionColor, selectionState: selectionState, selectTextOnFocus: selectTextOnFocus, spellCheck: spellCheck, textAlign: textAlign, inputStyle: inputStyle};
-            
+            let { accessibilityLabel, allowSpace, autoCapitalize, autoCorrect, autoFocus, caretHidden, clearButtonMode, clearTextOnFocus, dataDetectorTypes, dblurOnSubmit, defaultValue, disableFullscreenUI, editable, enablesReturnKeyAutomatically, inlineImageLeft, inlineImagePadding, keyboardAppearance, keyboardType, maxLength, multiline, numberOfLines, onBlur, onChangeText, onContentSizeChange, onEndEditing, onFocus, onFocusxonChange, onKeyPress, onLayout, onScroll, onSelectionChange, onSubmitEditing, placeholder, placeholderTextColor, placeholderStyle, returnKeyLabel, returnKeyType, secureTextEntry, selection, selectionColor, selectionState, selectTextOnFocus, spellCheck, textAlign, inputStyle} = this.props;
+
+            let newProps = { accessibilityLabel, allowSpace, autoCapitalize, autoCorrect, autoFocus, caretHidden, clearButtonMode, clearTextOnFocus, dataDetectorTypes, dblurOnSubmit, defaultValue, disableFullscreenUI, editable, enablesReturnKeyAutomatically, inlineImageLeft, inlineImagePadding, keyboardAppearance, keyboardType, maxLength, multiline, numberOfLines, onBlur, onChangeText, onContentSizeChange, onEndEditing, onFocus, onFocusxonChange, onKeyPress, onLayout, onScroll, onSelectionChange, onSubmitEditing, placeholder, placeholderStyle, placeholderTextColor, returnKeyLabel, returnKeyType, secureTextEntry, selection, selectionColor, selectionState, selectTextOnFocus, spellCheck, textAlign, inputStyle};
+
             let userStyle = StyleSheet.flatten(this.props.style);
             let containerStyle = userStyle && userStyle.height ? { height: userStyle.height } : undefined;
 
@@ -244,7 +245,7 @@ const Label = (props) => (
 const styles = StyleSheet.create({
 
     frame: {
-        
+
     },
     textContainer: {
         flexDirection: 'row',

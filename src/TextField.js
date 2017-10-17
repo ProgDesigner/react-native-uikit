@@ -13,7 +13,6 @@ function mapHash(hash, func) {
 }
 
 const deepcopy = require('deepcopy');
-const includes = require('array-includes');
 
 export class InputText extends Component {
 
@@ -214,7 +213,7 @@ export class InputText extends Component {
         return (
             <View pointerEvents={pointerEvents} accessibilityLabel={accessibilityLabel} style={[styles.inputContainer, style, inputViewStyle]} onLayout={this.onLayout}>
                 <TextInput {...newProps} ref={ref => {this._contentRef = ref;}} style={[styles.input, textHeightStyle, textAlignStyle, inputStyle]} underlineColorAndroid='transparent' placeholder='' editable={true} spellCheck={false} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} onChangeText={this.onChangeText.bind(this)} />
-                <View pointerEvents='none' style={[placeholderBaseStyle, placeholderStyle, placeholderAlignStyle, placeholderVisibleStyle]}>
+                <View pointerEvents='none' style={[placeholderBaseStyle, placeholderAlignStyle, placeholderVisibleStyle, placeholderStyle]}>
                     <Text style={{fontSize:fontSize, color:placeholderTextColor}}>{placeholder}</Text>
                 </View>
             </View>
