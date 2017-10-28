@@ -121,10 +121,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('.keystores/android.keystore.brainbag.jks')
-            storePassword 'brainbag!@#$'
-            keyAlias 'BrainBagKey'
-            keyPassword 'brainbag!@#$'
+            storeFile file('keystores/android.keystore.example.jks')
+            storePassword 'example'
+            keyAlias 'ExampleKey'
+            keyPassword 'example'
         }
     }
     buildTypes {
