@@ -2,11 +2,9 @@
 
 import React, {Component, Children} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View, Text, ViewPropTypes} from 'react-native';
+import {StyleSheet, View, Text, ViewPropTypes, EdgeInsetsPropType} from 'react-native';
 import Button from './Button';
 import ScrollView from './ScrollView';
-
-const EdgeInsetsPropType = require('EdgeInsetsPropType');
 
 class Item extends Component {
 

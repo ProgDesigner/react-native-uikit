@@ -103,7 +103,7 @@ export class InputText extends Component {
             clearButtonMode,
             clearTextOnFocus,
             dataDetectorTypes,
-            dblurOnSubmit,
+            blurOnSubmit,
             defaultValue,
             disableFullscreenUI,
             editable,
@@ -115,11 +115,11 @@ export class InputText extends Component {
             maxLength,
             multiline,
             numberOfLines,
-            // onBlur,
+            onBlur,
             onChangeText,
             onContentSizeChange,
             onEndEditing,
-            // onFocus,
+            onFocus,
             onFocusxonChange,
             onKeyPress,
             onLayout,
@@ -146,6 +146,30 @@ export class InputText extends Component {
             inputStyle,
         } = this.props;
 
+        let pointerEvents = editable === false ? 'none' : 'auto';
+        let userInputStyle = StyleSheet.flatten(inputStyle);
+        var fontSize = styles.input && styles.input.fontSize ? styles.input.fontSize : 15;
+        fontSize = userInputStyle && userInputStyle.fontSize ? userInputStyle.fontSize : fontSize;
+
+        let textAlignStyle = ( textAlign ) ? { textAlign:textAlign } : undefined;
+        let textAlignVerticalStyle = Platform.OS === 'android' && multiline === true ? { textAlignVertical : 'top' } : {};
+        let textHeightStyle = userStyle && userStyle.height ? { height:userStyle.height } : undefined;
+
+        /*
+        let placeholderBaseStyle = {position:'absolute', left:0, top:0, width:'100%', backgroundColor:'transparent', paddingVertical: 4, paddingHorizontal:8, opacity: 0.5};
+
+        placeholderBaseStyle.height = userStyle && userStyle.height ? userStyle.height : undefined;
+
+        let placeholderAlignStyle = multiline === true ? {flexDirection:'row', justifyContent:'flex-start', alignItems:'flex-start', } : {flexDirection:'row', justifyContent:'flex-start', alignItems:'center' };
+        let placeholderVisibleStyle = this.state.isFocused === false && this.isBlank === true ? {} : {display:'none'};
+        */
+
+        let inputViewStyle = userStyle && userStyle.height ? { height:userStyle.height } : undefined;
+
+        if (multiline === true) {
+            blurOnSubmit = false;
+        }
+
         let newProps = {
             accessibilityLabel: accessibilityLabel,
             autoCapitalize: autoCapitalize,
@@ -154,8 +178,8 @@ export class InputText extends Component {
             caretHidden: caretHidden,
             clearButtonMode: clearButtonMode,
             clearTextOnFocus: clearTextOnFocus,
-            dataDetectorTypes:dataDetectorTypes ,
-            dblurOnSubmit: dataDetectorTypes,
+            dataDetectorTypes: dataDetectorTypes ,
+            blurOnSubmit: blurOnSubmit,
             defaultValue: defaultValue,
             disableFullscreenUI: disableFullscreenUI,
             // editable: editable,
@@ -167,19 +191,19 @@ export class InputText extends Component {
             maxLength: maxLength,
             multiline: multiline,
             numberOfLines: numberOfLines,
-            //onBlur: onBlur,
+            onBlur: onBlur,
             // onChangeText: onChangeText,
             onContentSizeChange: onContentSizeChange,
             onEndEditing: onEndEditing,
-            //onFocus: onFocus,
+            onFocus: onFocus,
             onFocusxonChange: onFocusxonChange,
             onKeyPress: onKeyPress,
             onLayout: onLayout,
             onScroll: onScroll,
             onSelectionChange: onSelectionChange,
-            onSubmitEditing,
-            // placeholder: placeholder,
-            // placeholderTextColor: placeholderTextColor,
+            onSubmitEditing: onSubmitEditing,
+            placeholder: placeholder,
+            placeholderTextColor: placeholderTextColor,
             returnKeyLabel: returnKeyLabel,
             returnKeyType: returnKeyType ,
             secureTextEntry: secureTextEntry,
@@ -192,30 +216,23 @@ export class InputText extends Component {
             // underlineColorAndroid
         };
 
-        let pointerEvents = editable === false ? 'none' : 'auto';
-        let userInputStyle = StyleSheet.flatten(inputStyle);
-        var fontSize = styles.input && styles.input.fontSize ? styles.input.fontSize : 15;
-        fontSize = userInputStyle && userInputStyle.fontSize ? userInputStyle.fontSize : fontSize;
-
-        let textAlignStyle = ( textAlign ) ? { textAlign:textAlign } : undefined;
-        let textHeightStyle = userStyle && userStyle.height ? { height:userStyle.height } : undefined;
-
-        let placeholderBaseStyle = {position:'absolute', left:0, top:0, width:'100%', backgroundColor:'transparent', paddingVertical: 4, paddingHorizontal:8, opacity: 0.5};
-
-        placeholderBaseStyle.height = userStyle && userStyle.height ? userStyle.height : undefined;
-
-        let placeholderAlignStyle = multiline === true ? {flexDirection:'row', justifyContent:'flex-start', alignItems:'flex-start', } : {flexDirection:'row', justifyContent:'flex-start', alignItems:'center' };
-        let placeholderVisibleStyle = this.state.isFocused === false && this.isBlank === true ? {} : {display:'none'};
-
-        //let inputViewStyle = undefined;//multiline === true ? { alignItems:'flex-start', backgroundColor: '#ff3300', } : {};
-        let inputViewStyle = userStyle && userStyle.height ? { height:userStyle.height } : undefined;
-
         return (
             <View pointerEvents={pointerEvents} accessibilityLabel={accessibilityLabel} style={[styles.inputContainer, style, inputViewStyle]} onLayout={this.onLayout}>
-                <TextInput {...newProps} ref={ref => {this._contentRef = ref;}} style={[styles.input, textHeightStyle, textAlignStyle, inputStyle]} underlineColorAndroid='transparent' placeholder='' editable={true} spellCheck={false} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} onChangeText={this.onChangeText.bind(this)} />
+                <TextInput
+                    {...newProps}
+                    ref={ref => {this._contentRef = ref;}}
+                    style={[styles.input, textHeightStyle, textAlignStyle, textAlignVerticalStyle, inputStyle]}
+                    underlineColorAndroid='transparent'
+                    editable={true}
+                    spellCheck={false}
+                    onChangeText={this.onChangeText.bind(this)} />
+                {/*
+                    // onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)}
+
                 <View pointerEvents='none' style={[placeholderBaseStyle, placeholderAlignStyle, placeholderVisibleStyle, placeholderStyle]}>
                     <Text style={{fontSize:fontSize, color:placeholderTextColor}}>{placeholder}</Text>
                 </View>
+                */}
             </View>
         );
     }
@@ -360,7 +377,7 @@ export default class TextField extends Component {
             clearButtonMode,
             clearTextOnFocus,
             dataDetectorTypes,
-            dblurOnSubmit,
+            blurOnSubmit,
             defaultValue,
             disableFullscreenUI,
             editable,
@@ -444,8 +461,8 @@ export default class TextField extends Component {
             caretHidden: caretHidden,
             clearButtonMode: clearButtonMode,
             clearTextOnFocus: clearTextOnFocus,
-            dataDetectorTypes:dataDetectorTypes ,
-            dblurOnSubmit: dataDetectorTypes,
+            dataDetectorTypes: dataDetectorTypes ,
+            blurOnSubmit: blurOnSubmit,
             defaultValue: defaultValue,
             disableFullscreenUI: disableFullscreenUI,
             editable: editable,
@@ -467,7 +484,7 @@ export default class TextField extends Component {
             onLayout: onLayout,
             onScroll: onScroll,
             onSelectionChange: onSelectionChange,
-            // onSubmitEditing,
+            // onSubmitEditing: onSubmitEditing,
             // placeholder: placeholder,
             // placeholderTextColor : placeholderTextColor,
             returnKeyLabel: returnKeyLabel,

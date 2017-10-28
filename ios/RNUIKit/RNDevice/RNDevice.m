@@ -124,12 +124,6 @@ RCT_EXPORT_MODULE()
     return deviceName;
 }
 
-- (NSString*) userAgent
-{
-    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-    return [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-}
-
 - (NSString*) deviceLocale
 {
     NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
@@ -188,7 +182,6 @@ RCT_EXPORT_MODULE()
              @"appVersion": [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] ?: [NSNull null],
              @"buildNumber": [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"],
              @"systemManufacturer": @"Apple",
-             @"userAgent": self.userAgent,
              @"timezone": self.timezone,
              @"isEmulator": @(self.isEmulator),
              @"isTablet": @(self.isTablet),

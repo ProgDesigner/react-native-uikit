@@ -1,10 +1,20 @@
 {
   "name": "@progdesigner/react-native-uikit",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "ProgDesigner <me@progdesigner.com>",
   "description": "React Native UIKit",
   "private": false,
   "main": "index.js",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "package.json",
+    "android",
+    "ios",
+    "src",
+    "third-party",
+    "index.js"
+  ],
   "keywords": [
     "react",
     "react-native",
@@ -24,7 +34,6 @@
   },
   "dependencies": {
     "deepcopy": "^0.6.3",
-    "lodash": "4.17.4",
     "lodash.isequal": "^4.5.0",
     "moment": "^2.19.0",
     "pad-number": "0.0.4",

@@ -63,10 +63,6 @@ class Device {
       return RNDevice.deviceName;
     }
 
-    getUserAgent() {
-      return RNDevice.userAgent;
-    }
-
     getDeviceLocale() {
       return RNDevice.deviceLocale;
     }

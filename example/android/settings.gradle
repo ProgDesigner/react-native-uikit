@@ -1,0 +1,5 @@
+rootProject.name = 'Example'
+include ':@progdesigner/react-native-uikit'
+project(':@progdesigner/react-native-uikit').projectDir = new File(rootProject.projectDir, '../node_modules/@progdesigner/react-native-uikit/android')
+
+include ':app'
