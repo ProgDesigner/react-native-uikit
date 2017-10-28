@@ -58,8 +58,9 @@ typings/
 .env
 
 .DS_Store
-package-lock.json
 __tests__
-xcuserdata
 .keystores
 /example/android/app/keystores
+xcuserdata
+xcshareddata
+package-lock.json
